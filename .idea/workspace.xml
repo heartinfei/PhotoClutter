@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bc1d6b98-8253-4d09-8b52-bf77049c2813" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/clutter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tidy/extract_exif_as_fname.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tidy/extract_exif_as_fname.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tidy/search_duplicate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tidy/search_duplicate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tidy/tidy_up.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/tidy/tidy_up.py" afterDir="false" />
-    </list>
+    <list default="true" id="bc1d6b98-8253-4d09-8b52-bf77049c2813" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

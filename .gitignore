@@ -1,0 +1,18 @@
+# Created by .ignore support plugin (hsz.mobi)
+.DS_Store
+*.iml
+.gradle/
+.idea
+build/
+captures/
+local.properties
+mobile/build/
+x_jd/build/
+x_pingpp/build/
+x_umengpush/build/
+.idea/
+wear/build/
+Base/gen/
+gradle/
+gradlew.bat
+*.log

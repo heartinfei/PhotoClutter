@@ -10,6 +10,10 @@ filter_dict = {}
 print("当前OS：" + os.name)
 
 
+def handle_target_dir(photo_dir):
+    return filter_photos_in_dir(photo_dir, handle_photo)
+
+
 def filter_photos_in_dir(photo_dir, handle_fun):
     """
     获取当前目录以及子目录下的所有照片文件

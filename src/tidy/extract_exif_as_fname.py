@@ -13,7 +13,7 @@ def rename_file_in_dir(d):
     :return: None
     """
     for element in os.listdir(d):
-        f_name = os.path.join(clutter_path, element)
+        f_name = os.path.join(d, element)
         if not element.endswith(".jpeg"):
             continue
         elif os.path.isdir(f_name):
@@ -27,7 +27,7 @@ def rename_file_in_dir(d):
             make = tags.get('Image Make', "unknow")
             model = tags.get('Image Model', 'unknow')
             new_name = "{}_{}_{}.jpeg".format(shot_time, make, model).replace(" ", "_")
-            new_path = os.path.join(clutter_path, new_name)
+            new_path = os.path.join(d, new_name)
             try:
                 os.rename(f_name, new_path)
             except NotImplementedError:

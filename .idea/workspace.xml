@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bc1d6b98-8253-4d09-8b52-bf77049c2813" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="PhotoFilter" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1YKFU9m3Otczy1s1BG73imd1Ae0" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RunManager" selected="Python.tidy_up">
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="PhotoFilter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="extract_exif_as_fname" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PhotoFilter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/exif" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/exif/extract_exif_as_fname.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="search_duplicate" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PhotoFilter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/filter" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/filter/search_duplicate.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="tidy_up" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PhotoFilter" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/tidy" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/tidy/tidy_up.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.tidy_up" />
+        <item itemvalue="Python.extract_exif_as_fname" />
+        <item itemvalue="Python.search_duplicate" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc1d6b98-8253-4d09-8b52-bf77049c2813" name="Default Changelist" comment="" />
+      <created>1582683392311</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582683392311</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="104" y="23" width="1145" height="777" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582684481131">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="104" y="23" width="1145" height="777" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.777/-1870.-708.1870.1057@0.23.1280.777" timestamp="1582684481131" />
+    <state width="1845" height="192" key="GridCell.Tab.0.bottom" timestamp="1582710063828">
+      <screen x="-1870" y="-708" width="1870" height="1057" />
+    </state>
+    <state width="1255" height="308" key="GridCell.Tab.0.bottom/0.0.1280.800@0.0.1280.800" timestamp="1582699049834" />
+    <state width="1269" height="288" key="GridCell.Tab.0.bottom/0.23.1280.777/-1868.-708.1868.1057@-1868.-708.1868.1057" timestamp="1582702699273" />
+    <state width="1845" height="192" key="GridCell.Tab.0.bottom/0.23.1280.777/-1870.-708.1870.1057@-1870.-708.1870.1057" timestamp="1582710063828" />
+    <state width="1269" height="288" key="GridCell.Tab.0.bottom/0.23.1280.777/-1870.-708.1870.1057@0.23.1280.777" timestamp="1582709794030" />
+    <state width="1214" height="245" key="GridCell.Tab.0.bottom/41.23.1239.777@41.23.1239.777" timestamp="1582698758849" />
+    <state width="1845" height="192" key="GridCell.Tab.0.center" timestamp="1582710063826">
+      <screen x="-1870" y="-708" width="1870" height="1057" />
+    </state>
+    <state width="1255" height="308" key="GridCell.Tab.0.center/0.0.1280.800@0.0.1280.800" timestamp="1582699049832" />
+    <state width="1269" height="288" key="GridCell.Tab.0.center/0.23.1280.777/-1868.-708.1868.1057@-1868.-708.1868.1057" timestamp="1582702699272" />
+    <state width="1845" height="192" key="GridCell.Tab.0.center/0.23.1280.777/-1870.-708.1870.1057@-1870.-708.1870.1057" timestamp="1582710063826" />
+    <state width="1269" height="288" key="GridCell.Tab.0.center/0.23.1280.777/-1870.-708.1870.1057@0.23.1280.777" timestamp="1582709794029" />
+    <state width="1214" height="245" key="GridCell.Tab.0.center/41.23.1239.777@41.23.1239.777" timestamp="1582698758848" />
+    <state width="1845" height="192" key="GridCell.Tab.0.left" timestamp="1582710063825">
+      <screen x="-1870" y="-708" width="1870" height="1057" />
+    </state>
+    <state width="1255" height="308" key="GridCell.Tab.0.left/0.0.1280.800@0.0.1280.800" timestamp="1582699049832" />
+    <state width="1269" height="288" key="GridCell.Tab.0.left/0.23.1280.777/-1868.-708.1868.1057@-1868.-708.1868.1057" timestamp="1582702699271" />
+    <state width="1845" height="192" key="GridCell.Tab.0.left/0.23.1280.777/-1870.-708.1870.1057@-1870.-708.1870.1057" timestamp="1582710063825" />
+    <state width="1269" height="288" key="GridCell.Tab.0.left/0.23.1280.777/-1870.-708.1870.1057@0.23.1280.777" timestamp="1582709794028" />
+    <state width="1214" height="245" key="GridCell.Tab.0.left/41.23.1239.777@41.23.1239.777" timestamp="1582698758848" />
+    <state width="1845" height="192" key="GridCell.Tab.0.right" timestamp="1582710063827">
+      <screen x="-1870" y="-708" width="1870" height="1057" />
+    </state>
+    <state width="1255" height="308" key="GridCell.Tab.0.right/0.0.1280.800@0.0.1280.800" timestamp="1582699049833" />
+    <state width="1269" height="288" key="GridCell.Tab.0.right/0.23.1280.777/-1868.-708.1868.1057@-1868.-708.1868.1057" timestamp="1582702699272" />
+    <state width="1845" height="192" key="GridCell.Tab.0.right/0.23.1280.777/-1870.-708.1870.1057@-1870.-708.1870.1057" timestamp="1582710063827" />
+    <state width="1269" height="288" key="GridCell.Tab.0.right/0.23.1280.777/-1870.-708.1870.1057@0.23.1280.777" timestamp="1582709794030" />
+    <state width="1214" height="245" key="GridCell.Tab.0.right/41.23.1239.777@41.23.1239.777" timestamp="1582698758849" />
+    <state width="1269" height="430" key="GridCell.Tab.1.bottom" timestamp="1582708186969">
+      <screen x="-1870" y="-708" width="1870" height="1057" />
+    </state>
+    <state width="1255" height="308" key="GridCell.Tab.1.bottom/0.0.1280.800@0.0.1280.800" timestamp="1582699064853" />
+    <state width="1269" height="308" key="GridCell.Tab.1.bottom/0.23.1280.777/-1868.-708.1868.1057@-1868.-708.1868.1057" timestamp="1582701804005" />
+    <state width="1269" height="430" key="GridCell.Tab.1.bottom/0.23.1280.777/-1870.-708.1870.1057@-1870.-708.1870.1057" timestamp="1582708186969" />
+    <state width="1214" height="287" key="GridCell.Tab.1.bottom/41.23.1239.777@41.23.1239.777" timestamp="1582698282711" />
+    <state width="1269" height="430" key="GridCell.Tab.1.center" timestamp="1582708186968">
+      <screen x="-1870" y="-708" width="1870" height="1057" />
+    </state>
+    <state width="1255" height="308" key="GridCell.Tab.1.center/0.0.1280.800@0.0.1280.800" timestamp="1582699064851" />
+    <state width="1269" height="308" key="GridCell.Tab.1.center/0.23.1280.777/-1868.-708.1868.1057@-1868.-708.1868.1057" timestamp="1582701804003" />
+    <state width="1269" height="430" key="GridCell.Tab.1.center/0.23.1280.777/-1870.-708.1870.1057@-1870.-708.1870.1057" timestamp="1582708186968" />
+    <state width="1214" height="287" key="GridCell.Tab.1.center/41.23.1239.777@41.23.1239.777" timestamp="1582698282710" />
+    <state width="1269" height="430" key="GridCell.Tab.1.left" timestamp="1582708186968">
+      <screen x="-1870" y="-708" width="1870" height="1057" />
+    </state>
+    <state width="1255" height="308" key="GridCell.Tab.1.left/0.0.1280.800@0.0.1280.800" timestamp="1582699064850" />
+    <state width="1269" height="308" key="GridCell.Tab.1.left/0.23.1280.777/-1868.-708.1868.1057@-1868.-708.1868.1057" timestamp="1582701804003" />
+    <state width="1269" height="430" key="GridCell.Tab.1.left/0.23.1280.777/-1870.-708.1870.1057@-1870.-708.1870.1057" timestamp="1582708186968" />
+    <state width="1214" height="287" key="GridCell.Tab.1.left/41.23.1239.777@41.23.1239.777" timestamp="1582698282709" />
+    <state width="1269" height="430" key="GridCell.Tab.1.right" timestamp="1582708186969">
+      <screen x="-1870" y="-708" width="1870" height="1057" />
+    </state>
+    <state width="1255" height="308" key="GridCell.Tab.1.right/0.0.1280.800@0.0.1280.800" timestamp="1582699064852" />
+    <state width="1269" height="308" key="GridCell.Tab.1.right/0.23.1280.777/-1868.-708.1868.1057@-1868.-708.1868.1057" timestamp="1582701804004" />
+    <state width="1269" height="430" key="GridCell.Tab.1.right/0.23.1280.777/-1870.-708.1870.1057@-1870.-708.1870.1057" timestamp="1582708186969" />
+    <state width="1214" height="287" key="GridCell.Tab.1.right/41.23.1239.777@41.23.1239.777" timestamp="1582698282711" />
+    <state x="51" y="23" key="SettingsEditor" timestamp="1582685291344">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="51" y="23" key="SettingsEditor/0.23.1280.777/-1870.-708.1870.1057@0.23.1280.777" timestamp="1582685291344" />
+    <state x="-1368" y="-608" width="1094" height="857" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1582708735080">
+      <screen x="-1870" y="-708" width="1870" height="1057" />
+    </state>
+    <state x="-1368" y="-608" width="1094" height="857" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1280.777/-1870.-708.1870.1057@0.23.1280.777" timestamp="1582708735080" />
+    <state x="317" y="244" key="com.intellij.ide.util.TipDialog" timestamp="1582683407208">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="317" y="244" key="com.intellij.ide.util.TipDialog/0.23.1280.777/-1870.-708.1870.1057@0.23.1280.777" timestamp="1582683407208" />
+    <state x="324" y="206" width="1269" height="777" key="dock-window-1" timestamp="1582709303457">
+      <screen x="0" y="23" width="1280" height="777" />
+    </state>
+    <state x="324" y="206" width="1269" height="777" key="dock-window-1/0.23.1280.777/-1870.-708.1870.1057@-1870.-708.1870.1057" timestamp="1582709303457" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/filter/search_duplicate.py</url>
+          <line>25</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/filter/search_duplicate.py</url>
+          <line>24</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/exif/extract_exif_as_fname.py</url>
+          <line>28</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

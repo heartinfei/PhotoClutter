@@ -15,4 +15,5 @@ wear/build/
 Base/gen/
 gradle/
 gradlew.bat
+venv
 *.log

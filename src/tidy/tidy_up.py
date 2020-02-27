@@ -34,16 +34,15 @@ def del_by_list(file_list: list):
 
 
 def move_files_to_target_dir(fs: list, dst: str):
-    index = 0
     for f_path in fs:
         if not os.path.exists(dst):
             os.mkdir(dst)
         fname = os.path.split(f_path)[1]
         if fname is None:
             continue
-        index = index + 1
-        fname = str(index) + fname
-        shutil.move(f_path, os.path.join(dst, fname))
+        new_name = f_path.replace("/", "_")
+        new_path = os.path.join(dst, new_name)
+        shutil.move(f_path, new_path)
 
 
 def flat_move_to_target_dir(src, dst):
@@ -54,14 +53,19 @@ def flat_move_to_target_dir(src, dst):
     :return: None
     """
     for element in os.listdir(src):
+        if element.startswith("."):
+            continue
         full_name = os.path.join(src, element)
         if full_name.startswith(".") or full_name.endswith(".photoslibrary"):
             continue
         if os.path.isdir(full_name):
+            # new_dst = os.path.join(dst, element)
             flat_move_to_target_dir(full_name, dst)
+            continue
         if not os.path.exists(dst):
             os.mkdir(dst)
-        shutil.move(full_name, os.path.join(dst, element))
+        dst_path = os.path.join(dst, element)
+        shutil.move(full_name, dst_path)
 
 
 def search_duplicate_file():
@@ -87,10 +91,15 @@ def auto_tidy_up():
     自动整理文件夹
     :return:
     """
-    src_dir = input("请输入文件目录：")
-    duplicate_dir = input("输入重复文件目录：")
-    dst_dir = input("请输入存放整理结果目录：")
+    src_dir = '/Volumes/SSD256/p'  # input("请输入文件目录：")
+    duplicate_dir = '/Volumes/SSD256/duplicate'  # input("输入重复文件目录：")
+    dst_dir = '/Volumes/SSD256/clutter'  # input("请输入存放整理结果目录：")
     result_list = handle_target_dir(src_dir)
+    p = os.path.join(src_dir + "log_{}.log".format(len(result_list)))
+    ll = open(p, 'w')
+    for e in result_list:
+        ll.write(e + "\n")
+    ll.close()
     move_files_to_target_dir(result_list, duplicate_dir)
     # del_by_list(result_list)
     rename_file_in_dir(src_dir)

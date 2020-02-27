@@ -14,12 +14,12 @@ def rename_file_in_dir(d):
     :return: None
     """
     for element in os.listdir(d):
-        f_name = os.path.join(d, element)
-        if not element.endswith(".jpeg"):
+        if element.startswith("."):
             continue
-        elif os.path.isdir(f_name):
+        f_name = os.path.join(d, element)
+        if os.path.isdir(f_name):
             rename_file_in_dir(f_name)
-            break
+            continue
         else:
             if element.endswith(".jpeg"):
                 # 对照片重命名

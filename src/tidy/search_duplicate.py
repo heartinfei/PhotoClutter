@@ -46,7 +46,6 @@ def handle_photo(d, img):
     _photo_file = os.path.join(d, img)
     _md5 = is_duplicate(_photo_file)
     if _md5 is None:
-        print("找到重复文件：{}".format(_photo_file))
         return True
     else:
         filter_dict[_md5] = _photo_file

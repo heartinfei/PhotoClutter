@@ -33,6 +33,19 @@ def del_by_list(file_list: list):
             print("tidy_up-->NotImplementedError")
 
 
+def move_files_to_target_dir(fs: list, dst: str):
+    index = 0
+    for f_path in fs:
+        if not os.path.exists(dst):
+            os.mkdir(dst)
+        fname = os.path.split(f_path)[1]
+        if fname is None:
+            continue
+        index = index + 1
+        fname = str(index) + fname
+        shutil.move(f_path, os.path.join(dst, fname))
+
+
 def flat_move_to_target_dir(src, dst):
     """
     将目标文件夹（src）及子文件夹中的所有文件移动到dst文件夹
@@ -46,10 +59,9 @@ def flat_move_to_target_dir(src, dst):
             continue
         if os.path.isdir(full_name):
             flat_move_to_target_dir(full_name, dst)
-        if full_name.endswith(".jpeg"):
-            if not os.path.exists(dst):
-                os.mkdir(dst)
-            shutil.move(full_name, os.path.join(dst, element))
+        if not os.path.exists(dst):
+            os.mkdir(dst)
+        shutil.move(full_name, os.path.join(dst, element))
 
 
 def search_duplicate_file():
@@ -76,9 +88,11 @@ def auto_tidy_up():
     :return:
     """
     src_dir = input("请输入文件目录：")
+    duplicate_dir = input("输入重复文件目录：")
     dst_dir = input("请输入存放整理结果目录：")
     result_list = handle_target_dir(src_dir)
-    del_by_list(result_list)
+    move_files_to_target_dir(result_list, duplicate_dir)
+    # del_by_list(result_list)
     rename_file_in_dir(src_dir)
     flat_move_to_target_dir(src_dir, dst_dir)
 

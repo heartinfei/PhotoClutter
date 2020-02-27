@@ -78,5 +78,5 @@ def format_duration(video_duration: int) -> str:
 
 if __name__ == "__main__":
     print("作为模块倒入的时候不执行！")
-    clutter_path = input("输入批处理文件名：")
+    clutter_path = input("输入文件名：")
     rename_file_in_dir(clutter_path)

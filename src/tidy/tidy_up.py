@@ -3,46 +3,41 @@
 
 import shutil
 
-from src.tidy.extract_exif_as_fname import rename_file_in_dir
+from src.tidy.rename_file import rename_all_files_in_dir
 from src.tidy.search_duplicate import *
 
 
-def empty_target(log_file: str):
+def move_files_to_target_dir(file_path: str, dst: str):
     """
-    删除log文件中记录的文件
-    :param log_file:
+    将文件移动到指定目录
+    :param file_path:
+    :param dst:
     :return:
     """
-    for line in open(log_file, "r").readline():
-        try:
-            os.remove(line)
-        except NotImplementedError:
-            print("tidy_up-->NotImplementedError")
+    if not os.path.exists(dst):
+        os.mkdir(dst)
+    if not os.path.isdir(file_path):
+        file_name = os.path.split(file_path)
+        shutil.move(file_path, os.path.join(dst, file_name))
 
 
-def del_by_list(file_list: list):
+def del_empty_dir(dir_path: str):
     """
-    删除列表里的文件
-    :param file_list:
+    尝试删除文件夹，如果文件为空则删除
+    :param dir_path: 文件夹路径
     :return:
     """
-    for path in file_list:
-        try:
-            os.remove(path)
-        except NotImplementedError:
-            print("tidy_up-->NotImplementedError")
+    for entry in os.scandir(dir_path):
+        _path = entry.path
+        if os.path.isdir(_path):
+            del_empty_dir(_path)
 
-
-def move_files_to_target_dir(fs: list, dst: str):
-    for f_path in fs:
-        if not os.path.exists(dst):
-            os.mkdir(dst)
-        fname = os.path.split(f_path)[1]
-        if fname is None:
-            continue
-        new_name = f_path.replace("/", "_")
-        new_path = os.path.join(dst, new_name)
-        shutil.move(f_path, new_path)
+    try:
+        os.rmdir(dir_path)
+    except NotImplementedError:
+        pass
+    except OSError:
+        pass
 
 
 def flat_move_to_target_dir(src, dst):
@@ -52,24 +47,21 @@ def flat_move_to_target_dir(src, dst):
     :param dst: 目标文件夹（存放整理后的内容）
     :return: None
     """
-    for element in os.listdir(src):
-        if element.startswith("."):
+    for entry in os.scandir(src):
+        file_name = entry.name
+        file_path = entry.path
+        if file_name.startswith(".") or file_name.endswith(".photoslibrary"):
             continue
-        full_name = os.path.join(src, element)
-        if full_name.startswith(".") or full_name.endswith(".photoslibrary"):
-            continue
-        if os.path.isdir(full_name):
-            # new_dst = os.path.join(dst, element)
-            flat_move_to_target_dir(full_name, dst)
+        if os.path.isdir(file_path):
+            flat_move_to_target_dir(file_path, dst)
             continue
         if not os.path.exists(dst):
             os.mkdir(dst)
-        dst_path = os.path.join(dst, element)
-        shutil.move(full_name, dst_path)
+        shutil.move(file_path, os.path.join(dst, file_name))
 
 
 def search_duplicate_file():
-    result = handle_target_dir(input("请输入文件目录："))
+    result = find_duplicate_files_in_dir(input("请输入文件目录："))
     log_path = input("请输入结果保存路径：")
     log_file = open(log_path + ".log", "rw")
     for r in result:
@@ -79,7 +71,7 @@ def search_duplicate_file():
 
 
 def rename_all_file_in_target_dir():
-    rename_file_in_dir(input("请输入文件目录："))
+    rename_all_files_in_dir(input("请输入文件目录："))
 
 
 def flat_dir():
@@ -91,18 +83,13 @@ def auto_tidy_up():
     自动整理文件夹
     :return:
     """
-    src_dir = '/Volumes/SSD256/p'  # input("请输入文件目录：")
-    duplicate_dir = '/Volumes/SSD256/duplicate'  # input("输入重复文件目录：")
-    dst_dir = '/Volumes/SSD256/clutter'  # input("请输入存放整理结果目录：")
-    result_list = handle_target_dir(src_dir)
-    p = os.path.join(src_dir + "log_{}.log".format(len(result_list)))
-    ll = open(p, 'w')
-    for e in result_list:
-        ll.write(e + "\n")
-    ll.close()
+    src_dir = input("请输入文件目录：")
+    duplicate_dir = input("输入重复文件目录：")
+    dst_dir = input("请输入存放整理结果目录：")
+    result_list = find_duplicate_files_in_dir(src_dir)
     move_files_to_target_dir(result_list, duplicate_dir)
     # del_by_list(result_list)
-    rename_file_in_dir(src_dir)
+    # rename_file_in_dir(src_dir)
     flat_move_to_target_dir(src_dir, dst_dir)
 
 
@@ -120,10 +107,17 @@ if __name__ == "__main__":
     *********************************
     """
     print(tips)
-    cmd = input("请输入功能索引：")
+    # cmd = input("请输入功能索引：")
     switch = {"1": search_duplicate_file,
               '2': rename_all_file_in_target_dir,
               '3': flat_dir,
               '4': auto_tidy_up}
 
-    switch.get(cmd, default)()
+    # switch.get(cmd, default)()
+
+    test_path = "/Users/smzdm/Public/ImgSource"
+    target_dir = "/Users/smzdm/clutter"
+    flat_move_to_target_dir(test_path, target_dir)
+    # del_empty_dir(test_path)
+    # for p in os.listdir(test_path):
+    #     print(p)

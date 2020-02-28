@@ -78,7 +78,7 @@ def flat_move_to_target_dir(src, dst):
 
 
 def search_duplicate_file():
-    result = handle_target_dir(input("请输入文件目录："))
+    result = find_duplicate_files_in_dir(input("请输入文件目录："))
     log_path = input("请输入结果保存路径：")
     log_file = open(log_path + ".log", "rw")
     for r in result:
@@ -104,7 +104,7 @@ def auto_tidy_up():
     src_dir = input("请输入文件目录：")
     duplicate_dir = input("输入重复文件目录：")
     dst_dir = input("请输入存放整理结果目录：")
-    result_list = handle_target_dir(src_dir)
+    result_list = find_duplicate_files_in_dir(src_dir)
     move_files_to_target_dir(result_list, duplicate_dir)
     # del_by_list(result_list)
     # rename_file_in_dir(src_dir)

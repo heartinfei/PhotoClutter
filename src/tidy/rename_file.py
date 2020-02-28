@@ -4,6 +4,7 @@
 import exifread
 import os
 import datetime
+from src.tidy.support_types import *
 from moviepy.editor import VideoFileClip
 
 
@@ -13,11 +14,6 @@ def rename_all_files_in_dir(target_dir):
     :param target_dir: 目录
     :return: None
     """
-    # 图片格式
-    img_types = ('.jpg', '.jpeg', '.png', '.heic', '.dng')
-    # 视频格式
-    video_types = ('.mp4', '.mpeg', '.mov', '.3gp')
-
     for entry in os.scandir(target_dir):
         file_name = entry.name
         print("处理文件{}".format(file_name))
@@ -29,9 +25,8 @@ def rename_all_files_in_dir(target_dir):
             rename_all_files_in_dir(file_path)
             continue
         else:
-            try:
-                suffix = os.path.splitext(file_name)[1]
-            except IndexError:
+            suffix = get_file_suffix(file_name)
+            if suffix is None:
                 # 无后缀名的文件不处理
                 print("{}无后缀名不进行处理 ".format(file_path))
                 continue
@@ -157,4 +152,5 @@ if __name__ == "__main__":
     print("作为模块倒入的时候不执行！")
     # clutter_path = input("输入文件名：")
     # rename_file_in_dir(clutter_path)
-    rename_all_files_in_dir("/Users/smzdm/Public/ImgSource")
+    test_dir = "/Users/smzdm/Public/ImgSource"
+    rename_all_files_in_dir(test_dir)

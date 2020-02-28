@@ -7,10 +7,10 @@ import datetime
 from moviepy.editor import VideoFileClip
 
 # 图片格式
-img_types = ('jpg', 'jpeg', 'png', 'heic')
+img_types = ('.jpg', '.jpeg', '.png', '.heic', '.dng')
 
 # 视频格式
-video_types = ('mp4', 'mpeg4', 'mov', '3gp')
+video_types = ('.mp4', '.mpeg4', '.mov', '.3gp')
 
 
 def rename_file(old_name, new_name) -> bool:
@@ -24,7 +24,6 @@ def rename_file(old_name, new_name) -> bool:
         os.rename(old_name, new_name)
         return True
     except NotImplementedError or OSError:
-        print("将文件{}命名为{}失败".format(old_name, new_name))
         return False
 
 
@@ -35,8 +34,9 @@ def rename_files_in_dir(target_dir):
     :return: None
     """
     for entry in os.scandir(target_dir):
-        file_name: str = entry.name
-        if file_name.startWith("."):
+        file_name = entry.name
+        print("处理文件{}".format(file_name))
+        if file_name.startswith("."):
             # 系统隐藏文件/文件夹不处理
             continue
         file_path = entry.path
@@ -44,14 +44,20 @@ def rename_files_in_dir(target_dir):
             rename_files_in_dir(file_path)
             continue
         else:
-            suffix = file_name.split(".")[1]
+            try:
+                suffix = os.path.splitext(file_name)[1]
+            except IndexError:
+                # 无后缀名的文件不处理
+                print("{}无后缀名不进行处理 ".format(file_path))
+                continue
             if len(suffix.strip()) == 0:
                 continue
             if suffix in img_types:
                 # 对照片重命名
-                new_name = gen_name_for_img(file_path) + ".{}".format(suffix)
+                new_name = gen_name_for_img(file_path) + suffix
                 new_file_path = os.path.join(target_dir, new_name)
-                rename_file(file_path, new_file_path)
+                if not rename_file(file_path, new_file_path):
+                    print("将文件{}命名为{}失败".format(file_path, new_name))
             elif suffix in video_types:
                 # 对视频文件重命名
                 new_name = os.path.join(target_dir, gen_name_for_video(file_path))
@@ -63,8 +69,17 @@ def gen_name_for_img(img_full_name: str) -> str:
     tags = exifread.process_file(img)
     now = datetime.datetime.now()
     shot_time = tags.get('EXIF DateTimeOriginal', now)
-    make = tags.get('Image Make', "unknow")
-    model = tags.get('Image Model', 'unknow')
+    holder_label = "@"
+    make = tags.get('Image Make')
+    if make is not None:
+        make = make.values.strip()
+    else:
+        make = holder_label
+    model = tags.get('Image Model')
+    if model is not None:
+        model = model.values.strip()
+    else:
+        model = holder_label
     return "{}_{}_{}".format(shot_time, make, model).replace(" ", "_")
 
 

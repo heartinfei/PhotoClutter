@@ -3,11 +3,11 @@
 
 import shutil
 
-from src.tidy.extract_exif_as_fname import rename_file_in_dir
+from src.tidy.rename_file import rename_files_in_dir
 from src.tidy.search_duplicate import *
 
 
-def empty_target(log_file: str):
+def del_file_by_log_record(log_file: str):
     """
     删除log文件中记录的文件
     :param log_file:
@@ -15,12 +15,13 @@ def empty_target(log_file: str):
     """
     for line in open(log_file, "r").readline():
         try:
+            os.scandir()
             os.remove(line)
         except NotImplementedError:
             print("tidy_up-->NotImplementedError")
 
 
-def del_by_list(file_list: list):
+def del_file_by_list(file_list: list):
     """
     删除列表里的文件
     :param file_list:
@@ -44,6 +45,18 @@ def move_files_to_target_dir(fs: list, dst: str):
         index = index + 1
         fname = str(index) + fname
         shutil.move(f_path, os.path.join(dst, fname))
+
+
+def del_empty_dir(dir_path: str):
+    """
+    尝试删除文件夹，如果文件为空则删除
+    :param dir_path: 文件夹路径
+    :return:
+    """
+    try:
+        os.rmdir(dir_path)
+    except NotImplementedError or OSError:
+        pass
 
 
 def flat_move_to_target_dir(src, dst):
@@ -75,7 +88,8 @@ def search_duplicate_file():
 
 
 def rename_all_file_in_target_dir():
-    rename_file_in_dir(input("请输入文件目录："))
+    pass
+    # rename_files_in_dir(input("请输入文件目录："))
 
 
 def flat_dir():
@@ -93,7 +107,7 @@ def auto_tidy_up():
     result_list = handle_target_dir(src_dir)
     move_files_to_target_dir(result_list, duplicate_dir)
     # del_by_list(result_list)
-    rename_file_in_dir(src_dir)
+    # rename_file_in_dir(src_dir)
     flat_move_to_target_dir(src_dir, dst_dir)
 
 
@@ -111,10 +125,18 @@ if __name__ == "__main__":
     *********************************
     """
     print(tips)
-    cmd = input("请输入功能索引：")
+    # cmd = input("请输入功能索引：")
     switch = {"1": search_duplicate_file,
               '2': rename_all_file_in_target_dir,
               '3': flat_dir,
               '4': auto_tidy_up}
 
-    switch.get(cmd, default)()
+    # switch.get(cmd, default)()
+
+    test_path = "/Users/smzdm/Public/ImgSource"
+    # for p in os.listdir(test_path):
+    #     print(p)
+    for entry in os.scandir(test_path):
+        file_name = entry.name
+        path = entry.path
+        print(file_name)

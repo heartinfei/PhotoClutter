@@ -3,7 +3,7 @@
 
 import shutil
 
-from src.tidy.rename_file import rename_files_in_dir
+from src.tidy.rename_file import rename_all_files_in_dir
 from src.tidy.search_duplicate import *
 
 

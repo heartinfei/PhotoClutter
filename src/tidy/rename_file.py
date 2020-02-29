@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 
 import exifread
-import os
 import datetime
 from src.tidy.support_types import *
 from moviepy.editor import VideoFileClip
@@ -32,17 +31,19 @@ def rename_all_files_in_dir(target_dir):
                 continue
             if len(suffix.strip()) == 0:
                 continue
+            new_name = ""
             if suffix in img_types:
                 # 对照片重命名
                 new_name = gen_name_for_img(file_path) + suffix
-                new_file_path = os.path.join(target_dir, new_name)
-                if not rename_file(file_path, new_file_path):
-                    print("将文件{}命名为{}失败".format(file_path, new_name))
             elif suffix in video_types:
                 # 对视频文件重命名
-                new_name = fix_video_file_name(file_path)
-                if new_name is not None:
-                    rename_file(file_path, os.path.join(target_dir, new_name))
+                new_name = gen_name_for_video(file_path) + suffix
+            # 合成新路径
+            new_file_path = os.path.join(target_dir, new_name)
+            if not rename_file(file_path, new_file_path):
+                print("将文件{}命名为{}失败".format(file_path, new_name))
+            else:
+                print("将文件{}命名为{}成功".format(file_path, new_name))
 
 
 def rename_file(old_name, new_name) -> bool:
@@ -52,6 +53,8 @@ def rename_file(old_name, new_name) -> bool:
     :param new_name: New name for the file.
     :return: True 成功
     """
+    if old_name is None or new_name is None:
+        return False
     try:
         os.rename(old_name, new_name)
         return True
@@ -59,13 +62,13 @@ def rename_file(old_name, new_name) -> bool:
         return False
 
 
-def gen_name_for_img(img_full_name: str) -> str:
+def gen_name_for_img(img_path: str) -> str:
     """
     提取图片文件的exif信息生成新文件名称
-    :param img_full_name: 图片文件的全路径名称
+    :param img_path: 图片文件的全路径名称
     :return: 新名称
     """
-    img = open(img_full_name, "rb")
+    img = open(img_path, "rb")
     tags = exifread.process_file(img)
     now = datetime.datetime.now()
     shot_time = tags.get('EXIF DateTimeOriginal', now)
@@ -83,27 +86,18 @@ def gen_name_for_img(img_full_name: str) -> str:
     return "{}_{}_{}".format(shot_time, make, model).replace(" ", "_")
 
 
-def gen_name_for_video(video_full_name: str):
+def gen_name_for_video(video_path: str):
     """
     提取视频时长放在名称上
-    :param video_full_name:
+    :param video_path:
     :return:
     """
-    p_n = os.path.split(video_full_name)
-    if len(p_n) < 2:
-        return None
-    v_path = p_n[0]
-    v_name = p_n[1]
-    name_parts = v_name.split(".")
-    if len(name_parts) < 2:
-        return None
-    else:
-        suffix = name_parts[1][0:3]
-    clip = VideoFileClip(video_full_name)
+    file_create_time = os.path.getctime(video_path)
+    time_str = datetime.datetime.fromtimestamp(file_create_time)
+    clip = VideoFileClip(video_path)
     duration = format_duration(clip.duration)
-    new_name = "{}_{}.{}".format(name_parts[0], duration, suffix)
-    full_name = os.path.join(v_path, new_name)
-    return full_name
+    new_name = "{}_{}".format(time_str, duration).replace(" ", "_")
+    return new_name
 
 
 def fix_video_file_name(video_full_name: str):
@@ -152,5 +146,5 @@ if __name__ == "__main__":
     print("作为模块倒入的时候不执行！")
     # clutter_path = input("输入文件名：")
     # rename_file_in_dir(clutter_path)
-    test_dir = "/Users/smzdm/Public/ImgSource"
+    test_dir = "/Volumes/SSD256/test"
     rename_all_files_in_dir(test_dir)

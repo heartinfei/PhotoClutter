@@ -17,8 +17,10 @@ def move_files_to_target_dir(file_path: str, dst: str):
     if not os.path.exists(dst):
         os.mkdir(dst)
     if not os.path.isdir(file_path):
-        file_name = os.path.split(file_path)
-        shutil.move(file_path, os.path.join(dst, file_name))
+        file_name = os.path.split(file_path)[1]
+        new_path = os.path.join(dst, file_name)
+        shutil.move(file_path, new_path)
+        print("移动文件：{}-->{}".format(file_path, new_path))
 
 
 def del_empty_dir(dir_path: str):
@@ -60,64 +62,26 @@ def flat_move_to_target_dir(src, dst):
         shutil.move(file_path, os.path.join(dst, file_name))
 
 
-def search_duplicate_file():
-    result = find_duplicate_files_in_dir(input("请输入文件目录："))
-    log_path = input("请输入结果保存路径：")
-    log_file = open(log_path + ".log", "rw")
-    for r in result:
-        log_file.write(r + "\n")
-    log_file.close()
-    print("搜索结果保存在 {}".format(log_path))
-
-
-def rename_all_file_in_target_dir():
-    rename_all_files_in_dir(input("请输入文件目录："))
-
-
-def flat_dir():
-    flat_move_to_target_dir(input("请输入待整理文件目录："), input("请输入存放整理结果目录："))
-
-
-def auto_tidy_up():
-    """
-    自动整理文件夹
-    :return:
-    """
-    src_dir = input("请输入文件目录：")
-    duplicate_dir = input("输入重复文件目录：")
-    dst_dir = input("请输入存放整理结果目录：")
-    result_list = find_duplicate_files_in_dir(src_dir)
-    move_files_to_target_dir(result_list, duplicate_dir)
-    # del_by_list(result_list)
-    # rename_file_in_dir(src_dir)
-    flat_move_to_target_dir(src_dir, dst_dir)
-
-
-def default():
-    print("No such command.")
-
-
 if __name__ == "__main__":
-    tips = """
-    *********************************
-    * 1. 搜索重复文件
-    * 2. 重命名文件
-    * 3. 文件夹子目录展平
-    * 4. 智能整理文件夹（1 & 2 & 3）
-    *********************************
-    """
-    print(tips)
-    # cmd = input("请输入功能索引：")
-    switch = {"1": search_duplicate_file,
-              '2': rename_all_file_in_target_dir,
-              '3': flat_dir,
-              '4': auto_tidy_up}
+    source_dir = "/Volumes/SSD256/export"
+    clutter_dir = "/Volumes/SSD256/clutter"
+    duplicate_dir = "/Volumes/SSD256/duplicated"
+    # # 重命名所有文件
+    rename_all_files_in_dir(source_dir)
+    # # 搜索结果
+    # search_result = find_duplicate_files_in_dir(source_dir)
+    # duplicate_files = search_result[0]
+    # # 重复文件存放到指定目录
+    # for f in duplicate_files:
+    #     move_files_to_target_dir(f, duplicate_dir)
+    # clutter_files = search_result[1]
+    # # 非重复文件存放到指定目录
+    # for c in clutter_files:
+    #     move_files_to_target_dir(c, clutter_dir)
+    #
+    # flat_move_to_target_dir(source_dir, clutter_dir)
+    # 删除空目录
+    # del_empty_dir(source_dir)
+    # TODO 视频文件去重 & Live Photo处理 &
 
-    # switch.get(cmd, default)()
 
-    test_path = "/Users/smzdm/Public/ImgSource"
-    target_dir = "/Users/smzdm/clutter"
-    flat_move_to_target_dir(test_path, target_dir)
-    # del_empty_dir(test_path)
-    # for p in os.listdir(test_path):
-    #     print(p)

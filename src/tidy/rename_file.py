@@ -32,6 +32,7 @@ def rename_all_files_in_dir(target_dir):
             if len(suffix.strip()) == 0:
                 continue
             new_name = ""
+
             if suffix in img_types:
                 # 对照片重命名
                 new_name = gen_name_for_img(file_path) + suffix
@@ -44,6 +45,41 @@ def rename_all_files_in_dir(target_dir):
                 print("将文件{}命名为{}失败".format(file_path, new_name))
             else:
                 print("将文件{}命名为{}成功".format(file_path, new_name))
+
+
+def rename_live_photo_in_dir(target_dir: str):
+    """
+    给Live Phone重命名
+    :param target_dir: 目标文件夹
+    :return: None
+    """
+    for entry in os.scandir(target_dir):
+        heic_file_name = entry.name
+        heic_file_path = entry.path
+        if heic_file_name.startswith("."):
+            # 系统隐藏文件/文件夹不处理
+            continue
+        suffix = get_file_suffix(heic_file_name)
+
+        if suffix is None:
+            # 无后缀名的文件不处理
+            print("{}无后缀名不进行处理 ".format(heic_file_path))
+            continue
+        if len(suffix.strip()) == 0:
+            continue
+
+        if suffix != ".heic":
+            continue
+        dir_path = os.path.split(heic_file_path)[0]
+        mov_file_path = os.path.splitext(heic_file_path)[0] + ".mov"
+        if not os.path.exists(mov_file_path):
+            # mov 文件不存在就不是一个标准的Live Photo
+            continue
+
+        new_name = gen_name_for_img(heic_file_path)
+
+        rename_file(heic_file_path, os.path.join(dir_path, new_name + ".heic"))
+        rename_file(mov_file_path, os.path.join(dir_path, new_name + ".mov"))
 
 
 def rename_file(old_name, new_name) -> bool:
@@ -147,4 +183,5 @@ if __name__ == "__main__":
     # clutter_path = input("输入文件名：")
     # rename_file_in_dir(clutter_path)
     test_dir = "/Volumes/SSD256/test"
-    rename_all_files_in_dir(test_dir)
+    # rename_all_files_in_dir(test_dir)
+    rename_live_photo_in_dir(test_dir)

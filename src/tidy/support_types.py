@@ -3,7 +3,7 @@ import os
 # 图片格式
 img_types = ('.jpg', '.jpeg', '.png', '.dng')
 # 视频格式
-video_types = ('.mp4', '.mpeg', '.mov', '.3gp')
+video_types = ('.mp4', '.mov', '.3gp')
 # video_types = ()
 
 

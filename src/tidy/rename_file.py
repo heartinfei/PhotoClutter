@@ -39,6 +39,9 @@ def rename_all_files_in_dir(target_dir):
             elif suffix in video_types:
                 # 对视频文件重命名
                 new_name = gen_name_for_video(file_path) + suffix
+            else:
+                continue
+
             # 合成新路径
             new_file_path = os.path.join(target_dir, new_name)
             if not rename_file(file_path, new_file_path):
@@ -59,8 +62,10 @@ def rename_live_photo_in_dir(target_dir: str):
         if heic_file_name.startswith("."):
             # 系统隐藏文件/文件夹不处理
             continue
-        suffix = get_file_suffix(heic_file_name)
+        if os.path.isdir(heic_file_path):
+            rename_live_photo_in_dir(heic_file_path)
 
+        suffix = get_file_suffix(heic_file_name)
         if suffix is None:
             # 无后缀名的文件不处理
             print("{}无后缀名不进行处理 ".format(heic_file_path))
@@ -76,8 +81,7 @@ def rename_live_photo_in_dir(target_dir: str):
             # mov 文件不存在就不是一个标准的Live Photo
             continue
 
-        new_name = gen_name_for_img(heic_file_path)
-
+        new_name = gen_name_for_video(mov_file_path)
         rename_file(heic_file_path, os.path.join(dir_path, new_name + ".heic"))
         rename_file(mov_file_path, os.path.join(dir_path, new_name + ".mov"))
 
@@ -182,6 +186,6 @@ if __name__ == "__main__":
     print("作为模块倒入的时候不执行！")
     # clutter_path = input("输入文件名：")
     # rename_file_in_dir(clutter_path)
-    test_dir = "/Volumes/SSD256/test"
+    test_dir = "/Volumes/SSD256/整理后˚的照片/写真照片/live_photo"
     # rename_all_files_in_dir(test_dir)
     rename_live_photo_in_dir(test_dir)
